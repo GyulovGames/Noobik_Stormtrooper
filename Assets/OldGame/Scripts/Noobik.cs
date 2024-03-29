@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using YG;
+using System.Runtime.CompilerServices;
 
 public class Noobik : MonoBehaviour
 {
     [SerializeField] private float neckMaxAngle;
-    [SerializeField] private float sholderMaxAngle;
     [SerializeField] private float spineMaxAngle;
     [Space(25)]
     [SerializeField] private Transform neckTransform;
@@ -24,7 +24,7 @@ public class Noobik : MonoBehaviour
     [SerializeField] private ParticleSystem muzzleEffect;
     [SerializeField] private EventSystem eventSystem;
 
-    [SerializeField] public static UnityEvent ShootEvent = new UnityEvent(); 
+    [SerializeField] public static UnityEvent ShootEvent = new UnityEvent();
 
     private Camera mainCamera;
 
@@ -51,12 +51,12 @@ public class Noobik : MonoBehaviour
 
     private void Update()
     {
-        if(!paused)
+        if (!paused)
         {
             if (!eventSystem.IsPointerOverGameObject())
-            {               
+            {
                 Aiming();
-                
+
                 if (bulletsNumber > 0 && Time.time > nextFire)
                 {
                     if (Input.GetMouseButton(0))
@@ -70,11 +70,11 @@ public class Noobik : MonoBehaviour
                         bulletsNumber--;
                         SpawnBullet();
                     }
-                }              
+                }
             }
 
             LeftArmRotation();
-        }             
+        }
     }
 
     public void Aiming()
@@ -98,7 +98,7 @@ public class Noobik : MonoBehaviour
 
     public void SpawnSleeve() // Called from noob shooting animation.
     {
-       Instantiate(sleeve, sleeveSpawnerTransform.position, sleeveSpawnerTransform.rotation);       // There also will be a sleevers pool.
+        Instantiate(sleeve, sleeveSpawnerTransform.position, sleeveSpawnerTransform.rotation);       // There also will be a sleevers pool.
     }
 
     private Quaternion NeckRotationAngle(Vector2 mousePos)
@@ -108,7 +108,7 @@ public class Noobik : MonoBehaviour
 
         float rawAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         float clampedAngle = Mathf.Clamp(rawAngle, -neckMaxAngle, neckMaxAngle);
-        return  Quaternion.Euler(new Vector3(0, 0, clampedAngle));       
+        return Quaternion.Euler(new Vector3(0, 0, clampedAngle));
     }
     private Quaternion SholderRotationAngle(Vector3 mousePos)
     {
@@ -139,7 +139,7 @@ public class Noobik : MonoBehaviour
 
     private void Pause()
     {
-        if(!paused)
+        if (!paused)
         {
             paused = true;
         }

@@ -126,7 +126,7 @@ TextureImporter:
       name: noob normal face
       rect:
         serializedVersion: 2
-        x: 19
+        x: 20
         y: 136
         width: 8
         height: 8
@@ -212,10 +212,10 @@ TextureImporter:
         serializedVersion: 2
         x: 15
         y: 137
-        width: 4
+        width: 5
         height: 7
       alignment: 9
-      pivot: {x: 0.5, y: 0.714}
+      pivot: {x: 0.4, y: 0.714}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,7 +252,7 @@ TextureImporter:
       name: noob blinking face 1
       rect:
         serializedVersion: 2
-        x: 27
+        x: 28
         y: 136
         width: 8
         height: 8
@@ -273,7 +273,7 @@ TextureImporter:
       name: noob blinking face 2
       rect:
         serializedVersion: 2
-        x: 35
+        x: 36
         y: 136
         width: 8
         height: 8
@@ -294,7 +294,7 @@ TextureImporter:
       name: noob aiming face
       rect:
         serializedVersion: 2
-        x: 43
+        x: 44
         y: 136
         width: 8
         height: 8

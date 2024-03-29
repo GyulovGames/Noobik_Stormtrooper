@@ -46,7 +46,6 @@ public class GameCanvas : MonoBehaviour
         RefillBulletsMag();
         CountZombiesNumber();
 
-        Noobik.ShootEvent.AddListener(Shoot);
         Zombie.ZombieHitEvent.AddListener(HitZombie);
     }
 
