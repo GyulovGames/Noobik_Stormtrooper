@@ -18,6 +18,8 @@ public class Noobik : MonoBehaviour
     [SerializeField] private Transform spineTransform;
     [SerializeField] private Transform leftSholderTransform;
     [SerializeField] private Transform rightSholderTransform;
+    public GameObject bullet;
+    public Transform gunTransform;
 
     private Vector3 mousePosition;
     public bool isFacingRight = true;
@@ -36,6 +38,12 @@ public class Noobik : MonoBehaviour
     private void GetMousePosition()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+
+    private void NoobikShooting()
+    {
+        Instantiate(bullet, gunTransform.position, gunTransform.rotation);
     }
 
     private void NeckhRotation()

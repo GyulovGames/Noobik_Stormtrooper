@@ -357,18 +357,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Noobik
       objectReference: {fileID: 0}
-    - target: {fileID: 4079172661791964993, guid: 8e141ed82a2448e4a9b00cba2d6913c6, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4079172661791964993, guid: 8e141ed82a2448e4a9b00cba2d6913c6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1221856756, guid: 2af31939701d6a04d8c7f47947099464, type: 3}
-    - target: {fileID: 4079172661791964993, guid: 8e141ed82a2448e4a9b00cba2d6913c6, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6659779311826231077, guid: 8e141ed82a2448e4a9b00cba2d6913c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -550,5 +538,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 649664228}
   - {fileID: 1581100667}
-  - {fileID: 1236598968}
   - {fileID: 348813593}
+  - {fileID: 1236598968}
