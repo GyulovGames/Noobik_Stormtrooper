@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,26 +9,37 @@ using YG;
 
 public class Noobik : MonoBehaviour
 {
+    [SerializeField] private float jumpPower;
+    [SerializeField] private float movementSpeed;
+    [Space(10)]
     [SerializeField][Range(-45f, 45f)] private float minNechRotationAngle;
     [SerializeField][Range(-45f, 45f)] private float maxNechRotationAngle;
     [SerializeField][Range(-45f, 45f)] private float minSpineRotationAngle;
     [SerializeField][Range(-45f, 45f)] private float maxSpineRotationAngle;
     [Space(10)]
+    [SerializeField] private Transform groundChek;
     [SerializeField] private Transform handTransform;
     [SerializeField] private Transform neckhTransform;
     [SerializeField] private Transform spineTransform;
     [SerializeField] private Transform leftSholderTransform;
     [SerializeField] private Transform rightSholderTransform;
+    [Space(10)]
+    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private Animator animator;
     public GameObject bullet;
+    public LayerMask groundLayer;
     public Transform gunTransform;
 
     private Vector3 mousePosition;
-    public bool isFacingRight = true;
+    private float horizontalInput;
+    private bool isFacingRight = true;
 
     private void Update()
     {
+        GetPlayerInput();
         GetMousePosition();
 
+        Jump();
         BodyFlip();
         NeckhRotation();
         SpineRotation();
@@ -35,16 +47,20 @@ public class Noobik : MonoBehaviour
         RightSholderTransform();
     }
 
+    private void FixedUpdate()
+    {
+        Movement();
+    }
+
     private void GetMousePosition()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
-
-
-    private void NoobikShooting()
+    private void GetPlayerInput()
     {
-        Instantiate(bullet, gunTransform.position, gunTransform.rotation);
+        horizontalInput = Input.GetAxisRaw("Horizontal");
     }
+
 
     private void NeckhRotation()
     {
@@ -87,7 +103,6 @@ public class Noobik : MonoBehaviour
        
         rightSholderTransform.rotation = Quaternion.Euler(0, 0, angle);
     }
-
     private void BodyFlip()
     {
         if(isFacingRight && mousePosition.x < transform.position.x || !isFacingRight && mousePosition.x > transform.position.x)
@@ -96,6 +111,29 @@ public class Noobik : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+        }
+    }
+
+    private void NoobikShooting()
+    {
+        Instantiate(bullet, gunTransform.position, gunTransform.rotation);
+    }
+    private void Movement()
+    {
+        int intea = Mathf.FloorToInt(horizontalInput);
+        animator.SetInteger("Runing", intea);
+        rigidbody2D.velocity = new Vector2(horizontalInput * movementSpeed, rigidbody2D.velocity.y);
+    }
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundChek.position, 0.2f, groundLayer);
+    }
+
+    private void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
+        {
+            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpPower);
         }
     }
 }

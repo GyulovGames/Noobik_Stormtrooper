@@ -11,11 +11,12 @@ TagManager:
   - Zombie
   - Bullet
   - EventSystem
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Zombie
+  - Ground
   - Water
   - UI
   - 
