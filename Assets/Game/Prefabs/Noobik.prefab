@@ -337,7 +337,7 @@ Animator:
   m_GameObject: {fileID: 1858111608603315391}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d61a28404e875f949a191a7b26a4b38a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2bc4ff51d4b911e4f884a17f9424d1d4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -430,7 +430,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ca1843e0ea9b8a34885f022ba39a1eb3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fd4ca05214cdc764e8f6bed68eaabab4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1.6
@@ -535,18 +535,20 @@ MonoBehaviour:
   minSpineRotationAngle: -45
   maxSpineRotationAngle: 16
   groundChek: {fileID: 233448844000221697}
+  gunTransform: {fileID: 5286306898184782953}
   handTransform: {fileID: 8389878311991620412}
   neckhTransform: {fileID: 5895543518171271271}
   spineTransform: {fileID: 1833179825368186814}
   leftSholderTransform: {fileID: 7056769588641268514}
   rightSholderTransform: {fileID: 6367566767364549280}
-  rigidbody2D: {fileID: 7567061400595560625}
-  animator: {fileID: 2036907155650933541}
+  rigidBody: {fileID: 7567061400595560625}
+  mainAnimator: {fileID: 2036907155650933541}
+  shootingSound: {fileID: 6769351334272526297}
   bullet: {fileID: 5071753428959023319, guid: 7c8599abcf40fcb42bb4b063f2131e56, type: 3}
+  sleve: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  gunTransform: {fileID: 5286306898184782953}
 --- !u!1 &2048443492639948730
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,20 +19,25 @@ public class Noobik : MonoBehaviour
     [SerializeField][Range(-45f, 45f)] private float maxSpineRotationAngle;
     [Space(10)]
     [SerializeField] private Transform groundChek;
+    [SerializeField] private Transform gunTransform;
     [SerializeField] private Transform handTransform;
     [SerializeField] private Transform neckhTransform;
     [SerializeField] private Transform spineTransform;
     [SerializeField] private Transform leftSholderTransform;
     [SerializeField] private Transform rightSholderTransform;
     [Space(10)]
-    [SerializeField] private Rigidbody2D rigidbody2D;
-    [SerializeField] private Animator animator;
-    public GameObject bullet;
+    [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private Animator mainAnimator;
+    [SerializeField] private AudioSource shootingSound;
+    [Space(10)]
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject sleve;
+    [Space(10)]
     public LayerMask groundLayer;
-    public Transform gunTransform;
 
     private Vector3 mousePosition;
-    private float horizontalInput;
+    private int horizontalInput;
+    private bool fireInput;
     private bool isFacingRight = true;
 
     private void Update()
@@ -41,6 +47,7 @@ public class Noobik : MonoBehaviour
 
         Jump();
         BodyFlip();
+        Animations();
         NeckhRotation();
         SpineRotation();
         LeftSholderRotation();
@@ -58,10 +65,9 @@ public class Noobik : MonoBehaviour
     }
     private void GetPlayerInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        horizontalInput = Mathf.FloorToInt(Input.GetAxisRaw("Horizontal"));
+        fireInput = Input.GetMouseButton(0);
     }
-
-
     private void NeckhRotation()
     {
         Vector3 direction = mousePosition - neckhTransform.position;
@@ -103,9 +109,29 @@ public class Noobik : MonoBehaviour
        
         rightSholderTransform.rotation = Quaternion.Euler(0, 0, angle);
     }
+    private void ShootingAnimation()
+    {
+        shootingSound.Play();
+        Instantiate(bullet, gunTransform.position, gunTransform.rotation);
+    }
+    private void Animations()
+    {
+        mainAnimator.SetInteger("Legs", horizontalInput);
+        mainAnimator.SetInteger("Face", horizontalInput);
+        mainAnimator.SetBool("Hands", fireInput);
+        mainAnimator.SetBool("Jump", IsGrounded());
+    }
+    private void Movement()
+    {
+        rigidBody.velocity = new Vector2(horizontalInput * movementSpeed, rigidBody.velocity.y);
+    }
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundChek.position, 0.2f, groundLayer);
+    }
     private void BodyFlip()
     {
-        if(isFacingRight && mousePosition.x < transform.position.x || !isFacingRight && mousePosition.x > transform.position.x)
+        if (isFacingRight && mousePosition.x < transform.position.x || !isFacingRight && mousePosition.x > transform.position.x)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
@@ -113,27 +139,11 @@ public class Noobik : MonoBehaviour
             transform.localScale = localScale;
         }
     }
-
-    private void NoobikShooting()
-    {
-        Instantiate(bullet, gunTransform.position, gunTransform.rotation);
-    }
-    private void Movement()
-    {
-        int intea = Mathf.FloorToInt(horizontalInput);
-        animator.SetInteger("Runing", intea);
-        rigidbody2D.velocity = new Vector2(horizontalInput * movementSpeed, rigidbody2D.velocity.y);
-    }
-    private bool IsGrounded()
-    {
-        return Physics2D.OverlapCircle(groundChek.position, 0.2f, groundLayer);
-    }
-
     private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
         {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpPower);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpPower);
         }
     }
 }
