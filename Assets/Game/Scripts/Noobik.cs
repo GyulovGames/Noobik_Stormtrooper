@@ -19,12 +19,12 @@ public class Noobik : MonoBehaviour
     [SerializeField][Range(-45f, 45f)] private float maxSpineRotationAngle;
     [Space(10)]
     [SerializeField] private Transform groundChek;
-    [SerializeField] private Transform gunTransform;
     [SerializeField] private Transform handTransform;
     [SerializeField] private Transform neckhTransform;
     [SerializeField] private Transform spineTransform;
     [SerializeField] private Transform leftSholderTransform;
     [SerializeField] private Transform rightSholderTransform;
+    [SerializeField] private Transform bulletSpawnPoint;
     [Space(10)]
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Animator mainAnimator;
@@ -47,13 +47,12 @@ public class Noobik : MonoBehaviour
 
         Jump();
         BodyFlip();
-        Animations();
+        NoobAnimations();
         NeckhRotation();
         SpineRotation();
         LeftSholderRotation();
         RightSholderTransform();
     }
-
     private void FixedUpdate()
     {
         Movement();
@@ -111,11 +110,26 @@ public class Noobik : MonoBehaviour
     }
     private void ShootingAnimation()
     {
-        shootingSound.Play();
-        Instantiate(bullet, gunTransform.position, gunTransform.rotation);
+        GameObject bulletObject = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        Rigidbody2D bulletRigid = bulletObject.GetComponent<Rigidbody2D>();
+        bulletSpawnPoint.localRotation = Quaternion.Euler(0, 0, Random.Range(-1.5f, 1.5f));
+        bulletRigid.velocity = bulletSpawnPoint.transform.right * 60f * transform.localScale.x ;
     }
-    private void Animations()
+    private void NoobAnimations()
     {
+        if(horizontalInput > 0 && !isFacingRight)
+        {
+            mainAnimator.SetBool("LegsBackward", true);
+        }
+        else if(horizontalInput < 0 && isFacingRight)
+        {
+            mainAnimator.SetBool("LegsBackward", true);
+        }
+        else
+        {
+            mainAnimator.SetBool("LegsBackward", false);
+        }
+
         mainAnimator.SetInteger("Legs", horizontalInput);
         mainAnimator.SetInteger("Face", horizontalInput);
         mainAnimator.SetBool("Hands", fireInput);

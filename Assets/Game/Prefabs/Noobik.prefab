@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8389878311991620412}
   - component: {fileID: 8354777132766975160}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: noob hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 233448844000221697}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: groundChek
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4776940086327462583}
   - component: {fileID: 5786347765849940262}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: left leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5011942407344495731}
   - component: {fileID: 7880377162940098498}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 8369624745482549110}
   - component: {fileID: 6769351334272526297}
   - component: {fileID: 5754379432921492794}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Noobik
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -528,23 +528,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9e44cca8c6d284994a26bc2e0eabd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 9
+  jumpPower: 9.5
   movementSpeed: 6
   minNechRotationAngle: -15
   maxNechRotationAngle: 15
   minSpineRotationAngle: -45
   maxSpineRotationAngle: 16
   groundChek: {fileID: 233448844000221697}
-  gunTransform: {fileID: 5286306898184782953}
   handTransform: {fileID: 8389878311991620412}
   neckhTransform: {fileID: 5895543518171271271}
   spineTransform: {fileID: 1833179825368186814}
   leftSholderTransform: {fileID: 7056769588641268514}
   rightSholderTransform: {fileID: 6367566767364549280}
+  bulletSpawnPoint: {fileID: 5286306898184782953}
   rigidBody: {fileID: 7567061400595560625}
   mainAnimator: {fileID: 2036907155650933541}
   shootingSound: {fileID: 6769351334272526297}
-  bullet: {fileID: 5071753428959023319, guid: 7c8599abcf40fcb42bb4b063f2131e56, type: 3}
+  bullet: {fileID: 2171424447183645604, guid: 7c8599abcf40fcb42bb4b063f2131e56, type: 3}
   sleve: {fileID: 0}
   groundLayer:
     serializedVersion: 2
@@ -559,7 +559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5194084592967591522}
   - component: {fileID: 680070273280694452}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: right arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2152585436794688192}
   - component: {fileID: 7456493984027307756}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: noob calve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -727,7 +727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7056769588641268514}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leftSholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9165715993271732529}
   - component: {fileID: 3312507742103797544}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1833179825368186814}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 514311412605365187}
   - component: {fileID: 4466452139823438767}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: left arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -960,7 +960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4271350925728007427}
   - component: {fileID: 7648743382865326522}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: right leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1044,7 +1044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6367566767364549280}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rightSholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1076,7 +1076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5895543518171271271}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,7 +1109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1163535230421341695}
   - component: {fileID: 844442593627156086}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: noob calve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1193,7 +1193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8526458719868329921}
   - component: {fileID: 1765374531964372418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: machine gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1279,7 +1279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5286306898184782953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1295,7 +1295,7 @@ Transform:
   m_GameObject: {fileID: 8708731399315273651}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalPosition: {x: 1.53, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1396,6 +1396,14 @@ PrefabInstance:
     - target: {fileID: 5162612911221381168, guid: 6a9148dfd982dcf4a9837bba3da0221a, type: 3}
       propertyPath: m_Name
       value: muzzleFlash
+      objectReference: {fileID: 0}
+    - target: {fileID: 5162612911221381168, guid: 6a9148dfd982dcf4a9837bba3da0221a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5162612911221381168, guid: 6a9148dfd982dcf4a9837bba3da0221a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7812709064824107053, guid: 6a9148dfd982dcf4a9837bba3da0221a, type: 3}
       propertyPath: m_LocalPosition.x
