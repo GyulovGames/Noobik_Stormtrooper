@@ -29,6 +29,7 @@ public class Noobik : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Animator mainAnimator;
     [SerializeField] private AudioSource shootingSound;
+    [SerializeField] private ParticleSystem muzzleBreak;
     [Space(10)]
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject sleve;
@@ -110,6 +111,7 @@ public class Noobik : MonoBehaviour
     }
     private void ShootingAnimation()
     {
+        muzzleBreak.Play();
         GameObject bulletObject = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         Rigidbody2D bulletRigid = bulletObject.GetComponent<Rigidbody2D>();
         bulletSpawnPoint.localRotation = Quaternion.Euler(0, 0, Random.Range(-1.5f, 1.5f));
